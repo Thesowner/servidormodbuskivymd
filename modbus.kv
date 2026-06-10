@@ -1,0 +1,112 @@
+#:kivy 1.11.1
+
+<MyWidget>:
+    orientation: 'vertical'
+
+   
+        orientation: 'horizontal'
+        size_hint_y: 0.15
+        Label:
+            text: 'REG:'
+            size_hint_x: 0.35
+        TextInput:
+            id: txt_reg
+            hint_text: 'Ex: 1000'
+            multiline: False
+            size_hint_x: 0.65
+
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.15
+        Label:
+            text: 'Valor Leitura:'
+            size_hint_x: 0.35
+        Label:
+            id: lbl_valor
+            text: '---'
+            size_hint_x: 0.65
+
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.15
+        Label:
+            text: 'Valor Escrita:'
+            size_hint_x: 0.35
+        TextInput:
+            id: txt_escrita
+            hint_text: 'Ex: 42'
+            multiline: False
+            size_hint_x: 0.65
+
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.25
+
+        BoxLayout:
+            orientation: 'vertical'
+            CheckBox:
+                group: 'tipo'
+                active: True
+                on_press: root.selecionar_tipo('HR')
+            Label:
+                text: 'HR'
+                size_hint_y: 0.4
+
+        BoxLayout:
+            orientation: 'vertical'
+            CheckBox:
+                group: 'tipo'
+                on_press: root.selecionar_tipo('IR')
+            Label:
+                text: 'IR'
+                size_hint_y: 0.4
+
+        BoxLayout:
+            orientation: 'vertical'
+            CheckBox:
+                group: 'tipo'
+                on_press: root.selecionar_tipo('COIL')
+            Label:
+                text: 'COIL'
+                size_hint_y: 0.4
+
+        BoxLayout:
+            orientation: 'vertical'
+            CheckBox:
+                group: 'tipo'
+                on_press: root.selecionar_tipo('DI')
+            Label:
+                text: 'DI'
+                size_hint_y: 0.4
+
+        BoxLayout:
+            orientation: 'vertical'
+            CheckBox:
+                group: 'tipo'
+                on_press: root.selecionar_tipo('FLOAT')
+            Label:
+                text: 'FLOAT'
+                size_hint_y: 0.4
+
+        BoxLayout:
+            orientation: 'vertical'
+            CheckBox:
+                group: 'tipo'
+                on_press: root.selecionar_tipo('MB')
+            Label:
+                text: 'MB'
+                size_hint_y: 0.4
+
+    
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.2
+        Button:
+            text: 'LER'
+            on_press: root.ler()
+        Button:
+            text: 'ESCREVER'
+            on_press: root.escrever()
