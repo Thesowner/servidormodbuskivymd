@@ -6,6 +6,8 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.config import Config
 from cliente_modbus import ClienteModbus
+import os 
+os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
 
 _cliente = ClienteModbus('localhost', 502)
 _cliente.conectar()
@@ -29,12 +31,8 @@ class MyWidget(BoxLayout):
 
         if _tipo == 'HR':
             val = _cliente.ler_holding_register(end)
-        elif _tipo == 'IR':
-            val = _cliente.ler_input_register(end)
         elif _tipo == 'COIL':
             val = _cliente.ler_coil(end)
-        elif _tipo == 'DI':
-            val = _cliente.ler_discrete_input(end)
         elif _tipo == 'FLOAT':
             val = _cliente.ler_float(end)
         elif _tipo == 'MB':
