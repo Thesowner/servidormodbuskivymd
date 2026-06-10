@@ -2,111 +2,234 @@
 
 <MyWidget>:
     orientation: 'vertical'
+    padding: "16dp"
+    spacing: "12dp"
 
-    BoxLayout:
+    # --- Campo de IP ---
+    MDBoxLayout:
         orientation: 'horizontal'
-        size_hint_y: 0.15
-        Label:
+        size_hint_y: None
+        height: "64dp"
+        spacing: "16dp"
+        
+        MDLabel:
+            text: 'IP:'
+            size_hint_x: 0.3
+            halign: "left"
+            valign: "middle"
+            theme_text_color: "Primary"
+        
+        MDTextField:
+            id: txt_ip
+            hint_text: 'Ex: Localhost'
+            text: 'localhost'
+            multiline: False
+            size_hint_x: 0.7
+            mode: "rectangle"
+    
+        # --- Campo de IP ---
+    MDBoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: "64dp"
+        spacing: "16dp"
+        
+        MDLabel:
+            text: 'Porta:'
+            size_hint_x: 0.3
+            halign: "left"
+            valign: "middle"
+            theme_text_color: "Primary"
+        
+        MDTextField:
+            id: txt_porta
+            hint_text: 'Ex: 502'
+            text: '502'
+            multiline: False
+            size_hint_x: 0.7
+            mode: "rectangle"
+
+
+    # --- Campo de Registro ---
+    MDBoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: "64dp"
+        spacing: "16dp"
+        
+        MDLabel:
             text: 'REG:'
-            size_hint_x: 0.35
-        TextInput:
+            size_hint_x: 0.3
+            halign: "left"
+            valign: "middle"
+            theme_text_color: "Primary"
+        
+        MDTextField:
             id: txt_reg
             hint_text: 'Ex: 1000'
             multiline: False
-            size_hint_x: 0.65
+            size_hint_x: 0.7
+            mode: "rectangle"
 
 
-    BoxLayout:
+    # --- Campo de Leitura ---
+    MDBoxLayout:
         orientation: 'horizontal'
-        size_hint_y: 0.15
-        Label:
+        size_hint_y: None
+        height: "48dp"
+        spacing: "16dp"
+        
+        MDLabel:
             text: 'Valor Leitura:'
-            size_hint_x: 0.35
-        Label:
+            size_hint_x: 0.3
+            theme_text_color: "Secondary"
+        
+        MDLabel:
             id: lbl_valor
             text: '---'
-            size_hint_x: 0.65
+            size_hint_x: 0.7
+            bold: True
+            theme_text_color: "Primary"
 
-
-    BoxLayout:
+            
+    # --- Campo de Escrita ---
+    MDBoxLayout:
         orientation: 'horizontal'
-        size_hint_y: 0.15
-        Label:
+        size_hint_y: None
+        height: "64dp"
+        spacing: "16dp"
+        
+        MDLabel:
             text: 'Valor Escrita:'
-            size_hint_x: 0.35
-        TextInput:
+            size_hint_x: 0.3
+            theme_text_color: "Primary"
+        
+        MDTextField:
             id: txt_escrita
             hint_text: 'Ex: 42'
             multiline: False
-            size_hint_x: 0.65
+            size_hint_x: 0.7
+            mode: "rectangle"
 
 
-    BoxLayout:
+    # --- Seleção de Tipo (Checkboxes) ---
+    MDBoxLayout:
         orientation: 'horizontal'
-        size_hint_y: 0.25
+        size_hint_y: None
+        height: "68dp"
+        spacing: "8dp"
 
-        BoxLayout:
+        # Tipo: HR
+        MDBoxLayout:
             orientation: 'vertical'
-            CheckBox:
+            adaptive_size: True
+            pos_hint: {"center_x": .5, "center_y": .5}
+            MDCheckbox:
                 group: 'tipo'
                 active: True
+                size_hint: None, None
+                size: "36dp", "36dp"
                 on_press: root.selecionar_tipo('HR')
-            Label:
+            MDLabel:
                 text: 'HR'
-                size_hint_y: 0.4
+                halign: "center"
+                font_style: "Caption"
 
-        BoxLayout:
+        # Tipo: COIL
+        MDBoxLayout:
             orientation: 'vertical'
-            CheckBox:
+            adaptive_size: True
+            pos_hint: {"center_x": .5, "center_y": .5}
+            MDCheckbox:
                 group: 'tipo'
-                on_press: root.selecionar_tipo('IR')
-            Label:
-                text: 'IR'
-                size_hint_y: 0.4
-
-        BoxLayout:
-            orientation: 'vertical'
-            CheckBox:
-                group: 'tipo'
+                size_hint: None, None
+                size: "36dp", "36dp"
                 on_press: root.selecionar_tipo('COIL')
-            Label:
+            MDLabel:
                 text: 'COIL'
-                size_hint_y: 0.4
+                halign: "center"
+                font_style: "Caption"
 
-        BoxLayout:
+        # Tipo: FLOAT
+        MDBoxLayout:
             orientation: 'vertical'
-            CheckBox:
+            adaptive_size: True
+            pos_hint: {"center_x": .5, "center_y": .5}
+            MDCheckbox:
                 group: 'tipo'
-                on_press: root.selecionar_tipo('DI')
-            Label:
-                text: 'DI'
-                size_hint_y: 0.4
-
-        BoxLayout:
-            orientation: 'vertical'
-            CheckBox:
-                group: 'tipo'
+                size_hint: None, None
+                size: "36dp", "36dp"
                 on_press: root.selecionar_tipo('FLOAT')
-            Label:
+            MDLabel:
                 text: 'FLOAT'
-                size_hint_y: 0.4
+                halign: "center"
+                font_style: "Caption"
 
-        BoxLayout:
+        # Tipo: MB
+        MDBoxLayout:
             orientation: 'vertical'
-            CheckBox:
+            adaptive_size: True
+            pos_hint: {"center_x": .5, "center_y": .5}
+            MDCheckbox:
                 group: 'tipo'
+                size_hint: None, None
+                size: "36dp", "36dp"
                 on_press: root.selecionar_tipo('MB')
-            Label:
+            MDLabel:
                 text: 'MB'
-                size_hint_y: 0.4
-
-    
-    BoxLayout:
+                halign: "center"
+                font_style: "Caption"
+    # Tipo de Leitura (Concorrente ou Única)
+    MDBoxLayout:
         orientation: 'horizontal'
-        size_hint_y: 0.2
-        Button:
+        height: "68dp"
+        spacing: "8dp" 
+        MDLabel:
+            text: 'Selecionar Tipo de Leitura'
+            halign: "left"
+            font_style: "Caption"
+        MDBoxLayout:
+            orientation: 'vertical'
+            adaptive_size: True
+            pos_hint: {"x": .5, "center_y": 1}
+            MDCheckbox:
+                group: 'leitura_tipo'
+                size_hint: None, None
+                size: "70dp", "70dp"
+                pos_hint: {"x": -2, "y": 0.5}
+                on_active: root.set_recorrente(self.active)
+            MDLabel:
+                pos_hint: {"x": -2, "y": -5}
+                text: 'recorrente'
+                halign: "center"
+                font_style: "Caption"
+                
+        
+        
+
+
+
+    # --- Botões de Ação ---
+    MDBoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: "56dp"
+        spacing: "16dp"
+        
+        MDRaisedButton:
             text: 'LER'
+            size_hint_x: 0.5
             on_press: root.ler()
-        Button:
+            md_bg_color: app.theme_cls.primary_color
+            
+        MDRaisedButton:
             text: 'ESCREVER'
+            size_hint_x: 0.5
             on_press: root.escrever()
+            md_bg_color: app.theme_cls.accent_color
+
+        MDRaisedButton:
+            text: 'CONECTAR'
+            size_hint_x: 0.5
+            on_press: root.connect()
+            md_bg_color: app.theme_cls.primary_color

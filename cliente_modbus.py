@@ -74,12 +74,16 @@ class ClienteModbus:
         bits = [(leitura >> i) & 1 for i in range(16)]
         return bits
 
-    def escrever_bit_register(self, endereco, bit, estado):
+    def escrever_bits_register(self, endereco, bits_estados):
         leitura = self.ler_holding_register(endereco)
         if leitura is None:
             return False
-        if estado == 1:
-            leitura = leitura | (1 << bit)
-        else:
-            leitura = leitura & ~(1 << bit)
+        for bit, estado in bits_estados:
+            if int(estado):
+                leitura = leitura | (1 << bit)
+            else:
+                leitura = leitura & ~(1 << bit)
         return self.escrever_holding_register(endereco, leitura)
+
+    def escrever_bit_register(self, endereco, bit, estado):
+        return self.escrever_bits_register(endereco, [(bit, estado)])

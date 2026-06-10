@@ -1,4 +1,4 @@
 pymodbus
 pymodbustcp
 kivy
-kivyMD
+kivymd

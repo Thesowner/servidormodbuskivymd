@@ -1,6 +1,7 @@
 from pyModbusTCP.server import DataBank, ModbusServer
 import random
 from time import sleep
+from time import perf_counter
 
 
 class ServidorMODBUS():
@@ -23,13 +24,14 @@ class ServidorMODBUS():
         try:
             self._server.start()
             print("Servidor MODBUS em execução")
+            count = 0
             while True:
-    
-                print('======================')
-                print("Tabela MODBUS")
-                print(f'Holding Register \r\n R1000: {self._db.get_holding_registers(1000)} \r\n R2000: {self._db.get_holding_registers(2000)}')
-                print(f'Coil \r\n R1000: {self._db.get_coils(1000)}')
+                if count == 0:
+                    t_init = perf_counter()
+                    count += 1
                 sleep(1)
+                t = perf_counter() - t_init
+                print('Servidor rodando a {:.0f}s'.format(t))
         except Exception as e:
             print("Erro: ",e.args)
 if __name__ == '__main__':
